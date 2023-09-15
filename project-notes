@@ -1,0 +1,42 @@
+User stories
+------------
+1. Add a superhero/supervillain sighting (particular location and date)
+        > addSighting(SightingDto sightingDto)
+
+2. Fetch all superheroes sighted at a given location
+    - fetch from sighting_details by location_id
+    - extract super_id from results
+        > fetchByLocation(int locationId)
+
+3. Fetch all locations where a particular superhero has been seen.
+    - fetch records from sighting_details by super_id (WHERE super_id=?)
+    - extract location records by location_id from these results
+        > fetchLocationsFromSighting(SuperDto super_id)
+
+4. Fetch all sightings (hero and location) for a particular date
+    - fetch all records from sighting_details WHERE sighting_date=?
+        > fetchSightingForDate(date)
+
+5. Fetch all members of a particular organisation
+        > fetchSupersFromOrganisation(id organisation_id)
+
+6. Fetch all organisation a super person is a member of
+        > fetchOrganisationsForSuper(int super_id)
+
+DTOs
+-----
+- SuperDto
+- OrganisationDto
+- LocationDto
+- SightingDto
+
+- OrganisationContactDto
+- SuperpowerDto
+- SupertypeDto
+
+
+Assumptions
+-----------
+Super stands for superperson which intern stands for either supervillian or superhero.
+Sightings can only contain one superhero. If two superheros are seem at the same time somewhere, two records (one for each super) will be inputted.
+From the brief stating superhero have 'a superpower' I have taking that each superhero has exactly one superpower.
