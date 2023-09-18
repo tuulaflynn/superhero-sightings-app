@@ -12,7 +12,7 @@ public interface SightingService {
     List<SightingDto> fetchAllSightings();
     SightingDto addSighting(SightingDto sightingDto);
 
-    List<SightingDto> fetchSightingByDate(LocalDate sighting_date);
+    List<SightingDto> fetchSightingByDate(LocalDate sightingDate);
 
 
 }

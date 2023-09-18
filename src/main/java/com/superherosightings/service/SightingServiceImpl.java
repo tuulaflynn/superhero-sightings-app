@@ -87,6 +87,30 @@ public class SightingServiceImpl implements SightingService {
 
     @Override
     public List<SightingDto> fetchSightingByDate(LocalDate sighting_date) {
-        return null;
+        List<SightingEntity> allSightingsEntity = sightingDao.findBySightingDate(sighting_date);
+        // List to contain all sightings in dto form with composite entities copied and also in dto data type
+        List<SightingDto> allSightingsDto = new ArrayList<>();
+
+        for(SightingEntity eachSightingEntity : allSightingsEntity) {
+            SuperDto eachSuperDto = new SuperDto();
+            LocationDto eachLocationDto = new LocationDto();
+            SightingDto eachSightingDto = new SightingDto();
+
+            // copy the composite superEntity into a dto and set it in the sightingDto
+            BeanUtils.copyProperties(eachSightingEntity.getSuperEntity(), eachSuperDto);
+            eachSightingDto.setSuperDto(eachSuperDto);
+
+            // copy the composite locationEntity into a dto and set it in the sightingDto
+            BeanUtils.copyProperties(eachSightingEntity.getLocationEntity(), eachLocationDto);
+            eachSightingDto.setLocationDto(eachLocationDto);
+
+            // copy the remaining properties for sightingDto from the sightingEntity object
+            BeanUtils.copyProperties(eachSightingEntity, eachSightingDto);
+
+            // add this record which is now stored in all dto data types, containing all data from its composite entities, to the returned list
+            allSightingsDto.add(eachSightingDto);
+        }
+
+        return allSightingsDto;
     }
 }

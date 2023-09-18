@@ -38,9 +38,9 @@ public class SightingController {
     }
 
 
-    // http://localhost/8081/api/sightings/2023-05-27       CHECK THE PATH VARIABLE FOR A DATE CAN BE WRITTEN LIKE THIS
+    // http://localhost:8081/api/sightings/2023-05-27       // the path variable can be written like this for a date
     @GetMapping("sightings/{sightingDate}")
-    public List<SightingDto> fetchSightingByDate(@PathVariable("sightingDate") LocalDate sighting_date) {
-        return null;
+    public List<SightingDto> fetchSightingByDate(@PathVariable("sightingDate") LocalDate sightingDate) {
+        return sightingService.fetchSightingByDate(sightingDate);
     }
 }

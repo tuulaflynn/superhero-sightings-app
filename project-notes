@@ -40,3 +40,13 @@ Assumptions
 Super stands for superperson which intern stands for either supervillian or superhero.
 Sightings can only contain one superhero. If two superheros are seem at the same time somewhere, two records (one for each super) will be inputted.
 From the brief stating superhero have 'a superpower' I have taking that each superhero has exactly one superpower.
+
+
+To do
+-----
+- add exception for if date searched for has no sightings on
+        > or if the format of the date is wrong [has to be yyyy-mm-dd]
+- add exception for if super id entered does not exist
+- add exception for if location id entered does not exist
+- add exception for if the organisation id entered does not exist
+- maybe: add exception for if details of sightingDto trying to be added are incorrect
