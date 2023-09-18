@@ -1,39 +1,40 @@
 package com.superherosightings.controller;
 
-import com.superherosightings.dao.SightingDao;
 import com.superherosightings.model.LocationDto;
 import com.superherosightings.model.SightingDto;
 import com.superherosightings.model.SuperDto;
+import com.superherosightings.service.SightingService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
 
-// @CrossOrigin             add this later once we make it fullstack as it will not be the tomcat server calling.
+@CrossOrigin
 
 @RestController
 @RequestMapping("api")      // for future version it means all that needs to be changed is this mapping rather than all the endpoints individually.
 public class SightingController {
 
-    private SightingDao sightingDao;
+    private SightingService sightingService;
 
     @Autowired
-    public SightingController(SightingDao sightingDao) {
-        this.sightingDao = sightingDao;
+    public SightingController(SightingService sightingService) {
+        this.sightingService = sightingService;
+    }
+
+    @GetMapping("sightings")
+    public ResponseEntity<List<SightingDto>> fetchAllSightings() {
+        return new ResponseEntity<List<SightingDto>>(sightingService.fetchAllSightings(), HttpStatus.OK);
     }
 
     // http://localhost:8081/api/sightings
     @PostMapping("sightings")
-    public ResponseEntity<SightingDto> addSighting(@RequestBody SightingDto sightingDto) {
-        return null;
-    }
-
-    // http://localhost:8081/api/sightings/supers/2
-    @GetMapping("sighting/supers/{locationId}")
-    public ResponseEntity<List<SuperDto>> fetchSupersByLocation(@PathVariable("locationId") int locationId) {
-        return null;
+    public ResponseEntity<SightingDto> addSighting(@RequestBody SightingDto newSightingDto) {
+        System.out.println("controller");
+        return new ResponseEntity<>(sightingService.addSighting(newSightingDto), HttpStatus.OK);
     }
 
     // http://localhost/8081/api/sightings/locations/3

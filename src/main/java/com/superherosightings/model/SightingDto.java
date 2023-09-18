@@ -1,7 +1,5 @@
 package com.superherosightings.model;
 
-import com.superherosightings.dao.entities.LocationEntity;
-import com.superherosightings.dao.entities.SuperEntity;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
@@ -17,7 +15,7 @@ public class SightingDto {
     private int sightingId;
 
     @NotNull
-    private LocationEntity locationEntity;
+    private LocationDto locationDto;
 
     @NotNull
     private SuperDto superDto;

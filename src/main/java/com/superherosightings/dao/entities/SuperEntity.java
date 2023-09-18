@@ -34,4 +34,6 @@ public class SuperEntity {
     @ManyToOne
     @JoinColumn(name = "supertype_id")
     private SupertypeEntity supertypeEntity;
+
+    //allSightings
 }

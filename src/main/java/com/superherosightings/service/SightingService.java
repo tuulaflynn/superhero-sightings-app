@@ -8,9 +8,9 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface SightingService {
-    SightingDto addSighting(SightingDto sightingDto);
 
-    List<SuperDto> fetchSupersByLocation(int locationId);
+    List<SightingDto> fetchAllSightings();
+    SightingDto addSighting(SightingDto sightingDto);
 
     List<LocationDto> fetchLocationsBySuper(SuperDto super_id);
 
