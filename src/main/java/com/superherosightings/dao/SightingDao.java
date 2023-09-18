@@ -1,11 +1,8 @@
 package com.superherosightings.dao;
 
-import com.superherosightings.dao.entities.LocationEntity;
 import com.superherosightings.dao.entities.SightingEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 @Repository
 public interface SightingDao extends JpaRepository<SightingEntity, Integer> {
@@ -15,6 +12,4 @@ public interface SightingDao extends JpaRepository<SightingEntity, Integer> {
     // can return the data from the correct table (entity).
     // The second parameter is the data type of the primary key of said table we are accessing data from,
     // through the dao which intern goes through JpaRepository method which we are able to call as SightingDao has inherited them.
-
-    List<SightingEntity> findByLocationEntity(LocationEntity locationEntity);
 }

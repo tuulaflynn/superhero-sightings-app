@@ -37,11 +37,6 @@ public class SightingController {
         return new ResponseEntity<>(sightingService.addSighting(newSightingDto), HttpStatus.OK);
     }
 
-    // http://localhost/8081/api/sightings/locations/3
-    @GetMapping("sightings/locations/{superId}")
-    public ResponseEntity<List<LocationDto>> fetchLocationsBySuper(@PathVariable("superId") SuperDto super_id) {
-        return null;
-    }
 
     // http://localhost/8081/api/sightings/2023-05-27       CHECK THE PATH VARIABLE FOR A DATE CAN BE WRITTEN LIKE THIS
     @GetMapping("sightings/{sightingDate}")

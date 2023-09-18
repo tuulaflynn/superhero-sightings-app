@@ -1,6 +1,5 @@
 package com.superherosightings.service;
 
-import com.superherosightings.dao.LocationDao;
 import com.superherosightings.dao.SightingDao;
 import com.superherosightings.dao.entities.LocationEntity;
 import com.superherosightings.dao.entities.SightingEntity;
@@ -15,7 +14,6 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class SightingServiceImpl implements SightingService {
@@ -85,11 +83,6 @@ public class SightingServiceImpl implements SightingService {
         // put the updated record from the database back into sightingDto it now has a primary key
         newSightingDto.setSightingId(newSightingEntity.getSightingId());
         return newSightingDto;
-    }
-
-    @Override
-    public List<LocationDto> fetchLocationsBySuper(SuperDto super_id) {
-        return null;
     }
 
     @Override

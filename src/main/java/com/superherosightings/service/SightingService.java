@@ -12,8 +12,6 @@ public interface SightingService {
     List<SightingDto> fetchAllSightings();
     SightingDto addSighting(SightingDto sightingDto);
 
-    List<LocationDto> fetchLocationsBySuper(SuperDto super_id);
-
     List<SightingDto> fetchSightingByDate(LocalDate sighting_date);
 
 

@@ -35,5 +35,6 @@ public class SuperEntity {
     @JoinColumn(name = "supertype_id")
     private SupertypeEntity supertypeEntity;
 
-    //allSightings
+    @OneToMany(mappedBy = "superEntity")        // this creates the bidirectional mapping
+    List<SightingEntity> allSightings;
 }
