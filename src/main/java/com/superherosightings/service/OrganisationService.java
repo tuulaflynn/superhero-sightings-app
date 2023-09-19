@@ -8,5 +8,4 @@ import java.util.List;
 public interface OrganisationService {
     List<SuperDto> fetchSupersByOrganisation(int organisation_id);
 
-    List<OrganisationDto> fetchOrganisationsBySuper(int super_id);
 }

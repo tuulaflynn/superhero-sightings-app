@@ -2,10 +2,10 @@ package com.superherosightings.service;
 
 import com.superherosightings.dao.SuperDao;
 import com.superherosightings.dao.entities.LocationEntity;
+import com.superherosightings.dao.entities.OrganisationEntity;
 import com.superherosightings.dao.entities.SightingEntity;
 import com.superherosightings.dao.entities.SuperEntity;
-import com.superherosightings.model.LocationDto;
-import com.superherosightings.model.SuperDto;
+import com.superherosightings.model.*;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -47,6 +47,34 @@ public class SuperServiceImpl implements SuperService {
                 }
             });
             return allLocationsDto;
+        }
+        return null;
+    }
+
+    @Override
+    public List<OrganisationDto> fetchOrganisationsBySuper(int super_id) {
+        Optional<SuperEntity> superEntityOptional = superDao.findById(super_id);
+
+        if (superEntityOptional.isPresent()) {
+            List<OrganisationEntity> allOrganisationsEntity = superEntityOptional.get().getAllOrganisationsEntity();
+            List<OrganisationDto> allOrganisationsDto = new ArrayList<>();
+
+            allOrganisationsEntity.forEach((eachOrganisationEntity) -> {
+                OrganisationDto eachOrganisationDto = new OrganisationDto();
+                SupertypeDto eachSupertypeDto = new SupertypeDto();
+                OrganisationContactDto eachOrganisationContactDto = new OrganisationContactDto();
+
+                BeanUtils.copyProperties(eachOrganisationEntity, eachOrganisationDto);
+                // Copy composite entities into their respective DTO objects
+                BeanUtils.copyProperties(eachOrganisationEntity.getSupertypeEntity(), eachSupertypeDto);
+                BeanUtils.copyProperties(eachOrganisationEntity.getOrganisationContactEntity(), eachOrganisationContactDto);
+                // Set composite dto inside organisationDto
+                eachOrganisationDto.setSupertypeDto(eachSupertypeDto);
+                eachOrganisationDto.setOrganisationContactDto(eachOrganisationContactDto);
+
+                allOrganisationsDto.add(eachOrganisationDto);
+            });
+            return allOrganisationsDto;
         }
         return null;
     }

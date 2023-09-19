@@ -1,8 +1,6 @@
 package com.superherosightings.controller;
 
-import com.superherosightings.model.LocationDto;
 import com.superherosightings.model.SightingDto;
-import com.superherosightings.model.SuperDto;
 import com.superherosightings.service.SightingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

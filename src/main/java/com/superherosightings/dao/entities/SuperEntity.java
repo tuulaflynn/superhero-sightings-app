@@ -27,14 +27,18 @@ public class SuperEntity {
     @Column(name = "super_desc")
     private String superDesc;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "superpower_id")
-    private List<SuperpowerEntity> superpowerEntity;
+    private SuperpowerEntity superpowerEntity;
 
     @ManyToOne
     @JoinColumn(name = "supertype_id")
     private SupertypeEntity supertypeEntity;
 
     @OneToMany(mappedBy = "superEntity")        // this creates the bidirectional mapping
-    List<SightingEntity> allSightings;
+    private List<SightingEntity> allSightings;
+
+    @ManyToMany(mappedBy = "allSupersEntity")
+    private List<OrganisationEntity> allOrganisationsEntity;
+
 }

@@ -4,6 +4,8 @@ import com.superherosightings.dao.entities.OrganisationContactEntity;
 import com.superherosightings.dao.entities.SuperEntity;
 import lombok.*;
 
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -15,5 +17,6 @@ public class OrganisationDto {
     private String organisationName;
     private String organisationDesc;
     private OrganisationContactDto organisationContactDto;
-    private SuperEntity superEntity;
+    private SupertypeDto supertypeDto;
+    private List<SuperDto> allSupersDto;
 }

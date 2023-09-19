@@ -1,6 +1,7 @@
 package com.superherosightings.controller;
 
 import com.superherosightings.model.LocationDto;
+import com.superherosightings.model.OrganisationDto;
 import com.superherosightings.model.SuperDto;
 import com.superherosightings.service.SuperService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,5 +27,12 @@ public class SuperController {
     @GetMapping("sightings/locations/{superId}")
     public ResponseEntity<List<LocationDto>> fetchLocationsBySuper(@PathVariable("superId") int superId) {
         return new ResponseEntity<List<LocationDto>>(superService.fetchLocationsBySuper(superId), HttpStatus.OK);
+    }
+
+
+    // http://localhost:8081/api/organisations/2
+    @GetMapping("organisations/{superId}")
+    public ResponseEntity<List<OrganisationDto>> fetchOrganisationsBySuper(@PathVariable("superId") int superId) {
+        return new ResponseEntity<>(superService.fetchOrganisationsBySuper(superId), HttpStatus.OK);
     }
 }

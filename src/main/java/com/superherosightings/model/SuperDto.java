@@ -1,8 +1,10 @@
 package com.superherosightings.model;
 
-import com.superherosightings.dao.entities.SuperpowerEntity;
-import com.superherosightings.dao.entities.SupertypeEntity;
+import com.superherosightings.dao.entities.OrganisationEntity;
+
 import lombok.*;
+
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -16,4 +18,5 @@ public class SuperDto {
     private String superDesc;
     private SuperpowerDto superpowerDto;
     private SupertypeDto supertypeDto;
+    private List<OrganisationEntity> allOrganisationsDto;
 }
